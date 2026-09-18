@@ -94,22 +94,24 @@ input[type=search]:focus{border-color:var(--accent)}
 .ddAct span{font-size:12px;color:var(--accent);cursor:pointer;padding:2px 7px;border-radius:5px}
 .ddAct span:hover{background:var(--accent-s)}
 .tblwrap{overflow:auto;max-height:620px;border:1px solid var(--line);border-radius:10px}
-table{border-collapse:collapse;width:100%;font-size:13px}
+table{border-collapse:collapse;width:100%;font-size:11px}
 th{position:sticky;top:0;background:#f7f9fc;padding:9px 10px;text-align:right;font-weight:600;color:var(--txt2);
-  font-size:12px;border-bottom:1px solid var(--line);white-space:nowrap;cursor:pointer;z-index:2}
+  font-size:11px;border-bottom:1px solid var(--line);white-space:nowrap;cursor:pointer;z-index:2}
 th:first-child,th:nth-child(2){text-align:left}
 th.srt{color:var(--accent)}
 td{padding:8px 10px;text-align:right;border-bottom:1px solid var(--line2);font-variant-numeric:tabular-nums;white-space:nowrap}
 td:first-child{text-align:left;color:var(--mut);width:38px}
 td:nth-child(2){text-align:left;font-weight:600;min-width:140px}
-td.sub2{color:var(--mut);font-weight:400;font-size:11.5px}
+td.sub2{color:var(--mut);font-weight:400;font-size:11px}
+/* 所有表格数值 b 统一：11.5px / 600（与看板2 城市×车系表一致） */
+table td b{font-size:11.5px;font-weight:600}
 tbody tr:hover{background:#f8fafd}
 tbody tr:last-child td{border-bottom:none}
 table.ctr th,table.ctr td{text-align:center !important;vertical-align:middle}
-table.ctr td.sub2{color:var(--txt);font-size:13px}
+table.ctr td.sub2{color:var(--txt);font-size:11px}
 table.ctr th{padding:6px 8px}
 table.ctr td{padding:3px 8px;line-height:1.2}
-table.ctr td div{font-size:10.5px;line-height:1.15;margin-top:1px;color:var(--txt)}
+table.ctr td div{font-size:9px;line-height:1.15;margin-top:1px;color:#9aa3b2}
 /* 城市×车系总表：全列等宽铺满容器（不横向滚动）+ 台数浅灰小字 + B/D 系浅色底 */
 #cityTable{table-layout:fixed;width:100%}
 /* fixed 布局只认首行宽度：不设像素宽 → 城市 + 4 组 colspan=5 均分容器宽，21 列一屏放下 */
@@ -125,6 +127,12 @@ table.ctr td div{font-size:10.5px;line-height:1.15;margin-top:1px;color:var(--tx
 #cityTable thead tr:first-child th{top:0;height:34px}
 #cityTable thead tr:nth-child(2) th{top:34px;height:34px}
 #cityTable thead th[rowspan="2"]{height:68px;vertical-align:middle}
+/* 明细表（看板3）：全列等宽铺满容器（不横向滚动），长门店/集团名自动换行 */
+#dtTable{table-layout:fixed;width:100%}
+#dtTable th,#dtTable td{white-space:normal;word-break:break-word;padding-left:4px;padding-right:4px}
+#dtTable td b,#dtTable td div{white-space:nowrap}
+#dtTable th:first-child{width:36px}
+#dtTable th:nth-child(2){width:15%}
 tr.thin td{opacity:.5}
 .rk{display:inline-flex;align-items:center;justify-content:center;min-width:20px;height:20px;border-radius:5px;
   background:#f0f3f8;font-size:11px;color:var(--txt2);font-weight:600}
@@ -672,7 +680,7 @@ const mgrRank=n=>{const i=MGR_ORDER.indexOf(n);return i<0?99:i;};   // 未收录
   function cell(v,o){
     if(v==null&&o==0) return '<td class="na">—</td>';
     return `<td><b>${v==null?'—':Math.round(v).toLocaleString()}</b>
-      <div style="font-size:11px;color:#8b95a6;font-weight:400">${o}台</div></td>`;
+      <div style="font-size:9px;color:#8b95a6;font-weight:400">${o}台</div></td>`;
   }
   function clean(x){ return x && x!=='—' ? x : ''; }
   function refreshOpts(all){
