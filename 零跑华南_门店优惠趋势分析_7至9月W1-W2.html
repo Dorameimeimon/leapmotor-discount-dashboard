@@ -147,7 +147,18 @@ tr.thin td{opacity:.5}
   font-size:12.3px;color:var(--txt2);line-height:1.85}
 .foot b{color:var(--txt)}
 .foot ol{margin:6px 0 0 18px}
-@media(max-width:1100px){}
+/* 手机端：看板2/3 保持固定列宽、改为整块横向滑动，避免列被挤成一团
+   （与四轮驱动看板手机查看模式一致：宽屏铺满一屏，窄屏左右滑） */
+@media(max-width:900px){
+  .wrap{padding:0 12px}
+  .card{padding:14px 14px;margin-bottom:14px}
+  .sub{font-size:11px}
+  .tagrow{font-size:11px;gap:6px;flex-wrap:wrap}
+  #cityTable{width:100%;min-width:1040px}
+  #dtTable{width:100%;min-width:900px}
+  #cityTable th,#cityTable td{padding:3px 1px}
+  #dtTable th,#dtTable td{padding-left:3px;padding-right:3px}
+}
 </style>
 </head>
 <body>
