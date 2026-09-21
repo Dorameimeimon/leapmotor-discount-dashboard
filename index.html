@@ -62,22 +62,23 @@ svg{display:block;width:100%;height:auto;overflow:visible}
 .tb.dim.on{background:var(--accent);color:#fff;border-color:var(--accent)}
 .tabs .lab{font-size:12px;color:var(--mut);align-self:center;margin-right:2px}
 
-.ctrl{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:12px}
-input[type=search]{padding:7px 12px;border:1px solid var(--line);border-radius:8px;font-size:13px;width:160px;outline:none;font-family:inherit}
+.ctrl{display:flex;gap:4px;align-items:center;flex-wrap:wrap;margin-bottom:12px}
+@media(min-width:1170px){.ctrl{flex-wrap:nowrap}}   /* 宽屏强制控件单行 */
+input[type=search]{padding:6px 10px;border:1px solid var(--line);border-radius:8px;font-size:12px;width:100px;outline:none;font-family:inherit}
 input[type=search]:focus{border-color:var(--accent)}
-.btn{padding:7px 13px;border:1px solid var(--line);border-radius:8px;font-size:12.5px;cursor:pointer;background:#fff;user-select:none}
+.btn{padding:6px 9px;border:1px solid var(--line);border-radius:8px;font-size:12px;cursor:pointer;background:#fff;user-select:none}
 .btn.on{background:var(--accent-s);border-color:var(--accent);color:var(--accent);font-weight:600}
 .sep{width:1px;background:var(--line);height:20px;margin:0 2px}
 
 .dd{position:relative;display:inline-block}
-.ddBtn{display:flex;align-items:center;justify-content:space-between;gap:12px;min-width:180px;padding:7px 12px;
-  border:1px solid #b9c2d0;border-radius:6px;font-size:13px;cursor:pointer;background:#fff;user-select:none;white-space:nowrap}
+.ddBtn{display:flex;align-items:center;justify-content:space-between;gap:8px;min-width:88px;padding:6px 10px;
+  border:1px solid #b9c2d0;border-radius:6px;font-size:12px;cursor:pointer;background:#fff;user-select:none;white-space:nowrap}
 .ddBtn:hover{border-color:#8fa3c0}
 .dd.open .ddBtn,.ddBtn.on{border-color:var(--accent)}
 .dd.open .ddBtn{box-shadow:0 0 0 2px var(--accent-s)}
 .ddBtn .ar{color:#8b95a6;font-size:11px}
 /* 车型下拉收窄，保证看板3 控制栏一行放下 */
-#ddVeh .ddBtn{min-width:110px}
+#ddVeh .ddBtn{min-width:88px}
 .ddPanel{display:none;position:absolute;top:calc(100% + 5px);left:0;min-width:200px;max-height:300px;overflow:auto;
   background:#fff;border:1px solid #d7dde7;border-radius:5px;box-shadow:0 8px 24px rgba(16,24,40,.16);padding:5px 3px;z-index:60}
 .dd.open .ddPanel{display:block}
@@ -199,30 +200,29 @@ tr.thin td{opacity:.5}
     <div class="btn" id="dtExport" style="flex:none">📊 导出Excel</div>
   </div>
   <div class="ctrl">
-    <span style="font-size:12.5px;color:var(--mut)">零售经理</span>
+    <span style="font-size:12px;color:var(--mut)">零售经理</span>
     <div class="dd" id="ddMgr"><div class="ddBtn" id="ddMgrBtn">全部</div>
       <div class="ddPanel" id="ddMgrPanel"></div></div>
     <div class="sep"></div>
-    <span style="font-size:12.5px;color:var(--mut)">集团</span>
+    <span style="font-size:12px;color:var(--mut)">集团</span>
     <div class="dd" id="ddGrp"><div class="ddBtn" id="ddGrpBtn">全部</div>
       <div class="ddPanel" id="ddGrpPanel"></div></div>
-  </div>
-  <div class="ctrl">
-    <span style="font-size:12.5px;color:var(--mut)">车辆口径</span>
+    <div class="sep"></div>
+    <span style="font-size:12px;color:var(--mut)">车辆口径</span>
     <div class="btn" id="vmSer">按车系</div><div class="btn" id="vmMdl">按车型</div>
     <div class="sep"></div>
-    <span style="font-size:12.5px;color:var(--mut)" id="vehLab">车系</span>
+    <span style="font-size:12px;color:var(--mut)" id="vehLab">车系</span>
     <div class="dd" id="ddVeh"><div class="ddBtn" id="ddVehBtn">全部</div>
       <div class="ddPanel" id="ddVehPanel"></div></div>
     <div class="sep"></div>
-    <span style="font-size:12.5px;color:var(--mut)">经销商口径</span>
+    <span style="font-size:12px;color:var(--mut)">经销商口径</span>
     <div class="btn" id="dmStore">按门店</div><div class="btn" id="dmGroup">按集团</div>
     <div class="sep"></div>
     <input type="search" id="dtq" placeholder="搜索门店 / 集团 / 城市 / 零售经理 / 车型…">
     <div class="sep"></div>
-    <span style="font-size:12.5px;color:var(--mut)">排序</span>
-    <div class="btn on" data-dt="dev">9.1-9.20 vs 大区</div>
-    <div class="btn" data-dt="wow">9.1-9.20 vs 9.1-9.10</div>
+    <span style="font-size:12px;color:var(--mut)">排序</span>
+    <div class="btn on" data-dt="dev">vs 大区</div>
+    <div class="btn" data-dt="wow">vs 9.1-9.10</div>
     <div class="btn" data-dt="v2">9.1-9.20优惠</div>
   </div>
   <div class="tblwrap" style="max-height:640px"><table id="dtTable" class="ctr"></table></div>
@@ -233,7 +233,7 @@ tr.thin td{opacity:.5}
   <h2><span class="no">4</span>价盘预警清单（9.1-9.20）</h2>
   <div class="h2sub" id="alertSub"></div>
   <div class="ctrl">
-    <span style="font-size:12.5px;color:var(--mut)">零售经理</span>
+    <span style="font-size:12px;color:var(--mut)">零售经理</span>
     <div class="dd" id="ddAMgr"><div class="ddBtn" id="ddAMgrBtn">全部</div>
       <div class="ddPanel" id="ddAMgrPanel"></div></div>
   </div>
