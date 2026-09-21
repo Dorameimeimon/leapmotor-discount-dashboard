@@ -256,7 +256,7 @@ const CLR = {A05:'#E4572E',A10:'#F4A259',B01:'#C9A227',B10:'#76B041',C10:'#17A39
 const fmt = (v,d=0)=> v==null||isNaN(v) ? '<span class="na">—</span>' :
   Number(v).toLocaleString('zh-CN',{minimumFractionDigits:d,maximumFractionDigits:d});
 const yuan = v=> fmt(v,0);
-const sign = v=> v==null?'—':(v>0?'+':'')+Math.round(v).toLocaleString('zh-CN');
+const sign = v=> v==null?'—':Math.round(v).toLocaleString('zh-CN');   // 不带 +/- 号，方向由红/绿颜色区分
 const esc = s=> String(s).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
 const MGR_ORDER=['黄伟峰','熊俊晖','罗捷','贾迪赫','余子恩','方任昊','秦启超','胡浩','熊俊晖(代)','庄文迪','李博恩'];
 const mgrRank=n=>{const i=MGR_ORDER.indexOf(n);return i<0?99:i;};   // 未收录的排在最后
@@ -606,7 +606,7 @@ const mgrRank=n=>{const i=MGR_ORDER.indexOf(n);return i<0?99:i;};   // 未收录
           <td class="sub2" style="text-align:left">${esc(r.c||'-')}</td>
           <td class="sub2" style="text-align:left">${esc(r.g||'-')}</td>
           <td class="sub2" style="text-align:left">${esc(r.mg||'-')}</td>
-          <td><b>${yuan(r.v3)}</b></td><td class="pos">+${Math.round(r.dev).toLocaleString()}</td>
+          <td><b>${yuan(r.v3)}</b></td><td class="pos">${Math.round(r.dev).toLocaleString()}</td>
           <td class="${r.delta>0?'pos':'neg'}">${sign(r.delta)}</td><td>${r.o3}</td><td>${lv}</td></tr>`;
       }).join('')+'</tbody>';
   }
