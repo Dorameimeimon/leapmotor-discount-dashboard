@@ -500,9 +500,12 @@ const mgrRank=n=>{const i=MGR_ORDER.indexOf(n);return i<0?99:i;};   // 未收录
     });
     c.fillStyle='#151a22'; c.font='600 13px '+FONT; c.textAlign='center';
     c.fillText('城市',MX+cityW/2,top+hh+hh/2+4);
-    // 网格线
+    // 网格线（组名行内只画组边界竖线，组内竖线从子表头行开始 —— 保持合并单元格效果）
     c.strokeStyle='#e4e8ef'; c.lineWidth=1;
-    for(let i=0;i<=20;i++){ c.beginPath(); c.moveTo(xOf(i)+.5,top); c.lineTo(xOf(i)+.5,H-20); c.stroke(); }
+    for(let i=0;i<=20;i++){
+      const yTop=(i%5===0)?top:top+hh;
+      c.beginPath(); c.moveTo(xOf(i)+.5,yTop); c.lineTo(xOf(i)+.5,H-20); c.stroke();
+    }
     c.beginPath(); c.moveTo(MX+.5,top); c.lineTo(MX+.5,H-20); c.stroke();
     c.beginPath(); c.moveTo(MX,top+hh*2+.5); c.lineTo(W-MX,top+hh*2+.5); c.stroke();
     // 数据行
