@@ -437,7 +437,7 @@ const mgrRank=n=>{const i=MGR_ORDER.indexOf(n);return i<0?99:i;};   // 未收录
   const thCls=g=>TINT[g]?` class="${TINT[g]}"`:'';
   const thead='<thead><tr><th rowspan="2">城市</th>'+
     GKEYS.map(g=>`<th colspan="5"${thCls(g)}><span style="color:${CLR[G[g][0]]}">${g}</span></th>`).join('')+'</tr>'+
-    '<tr>'+GKEYS.map(g=>['7月','8月全月','9.1-9.10','9.11-9.20','环比'].map(t=>`<th${thCls(g)}>${t}</th>`).join('')).join('')+'</tr></thead><tbody>';
+    '<tr>'+GKEYS.map(g=>['7月','8月','9.1-9.10','9.11-9.20','环比'].map(t=>`<th${thCls(g)}>${t}</th>`).join('')).join('')+'</tr></thead><tbody>';
   let body=`<tr style="background:#f4f7ff"><td style="font-weight:700">合计</td>`+
     GKEYS.map(g=>cells(g,null)).join('')+'</tr>';
   const seen=new Set();
@@ -496,7 +496,7 @@ const mgrRank=n=>{const i=MGR_ORDER.indexOf(n);return i<0?99:i;};   // 未收录
       c.fillStyle=CLR[G[g][0]]; c.font='700 13px '+FONT;
       c.fillText(g,xOf(gi*5+2),top+hh/2+5);
       c.fillStyle='#4a5567'; c.font='600 12px '+FONT;
-      ['7月','8月全月','9.1-9.10','9.11-9.20','环比'].forEach((t,k)=>c.fillText(t,xOf(gi*5+k)+colW/2,top+hh+hh/2+4));
+      ['7月','8月','9.1-9.10','9.11-9.20','环比'].forEach((t,k)=>c.fillText(t,xOf(gi*5+k)+colW/2,top+hh+hh/2+4));
     });
     c.fillStyle='#151a22'; c.font='600 13px '+FONT; c.textAlign='center';
     c.fillText('城市',MX+cityW/2,top+hh+hh/2+4);
