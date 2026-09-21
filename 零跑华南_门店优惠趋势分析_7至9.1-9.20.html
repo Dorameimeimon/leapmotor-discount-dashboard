@@ -606,7 +606,7 @@ const mgrRank=n=>{const i=MGR_ORDER.indexOf(n);return i<0?99:i;};   // 未收录
           <td class="sub2" style="text-align:left">${esc(r.c||'-')}</td>
           <td class="sub2" style="text-align:left">${esc(r.g||'-')}</td>
           <td class="sub2" style="text-align:left">${esc(r.mg||'-')}</td>
-          <td><b>${yuan(r.v3)}</b></td><td class="pos">${Math.round(r.dev).toLocaleString()}</td>
+          <td><b>${yuan(r.v3)}</b></td><td class="${r.dev>0?'pos':'neg'}">${sign(r.dev)}</td>
           <td class="${r.delta>0?'pos':'neg'}">${sign(r.delta)}</td><td>${r.o3}</td><td>${lv}</td></tr>`;
       }).join('')+'</tbody>';
   }
